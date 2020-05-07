@@ -63,8 +63,8 @@ try:
         return x
 
     def create_string_buffer(size):
-        """Allocate the given amount of bytes"""
-        return ffi.new("char[]", size)
+        """Allocate the given amount of bytes (initially set to 0)"""
+        return ffi.new("uint8_t[]", size)
 
     def get_c_string(c_string):
         """Convert a C string into a Python byte sequence"""
@@ -86,7 +86,7 @@ try:
         def address_of(self):
             return self._pp
 
-    Array = ffi.new("char[1]").__class__.__bases__
+    Array = ffi.new("uint8_t[1]").__class__.__bases__
 
     backend = "cffi"
 
